@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="queryPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.Object" Name="getEmployeesFindByName_p_name"
+                IsQueriable="false"/>
+    </variableIterator>
+    <methodIterator Binds="getEmployeesFindByName.result"
+                    DataControl="SessionEJBLocal" RangeSize="25"
+                    BeanClass="model.Employees"
+                    id="getEmployeesFindByNameIterator"
+                    ChangeEventPolicy="ppr" Refresh="ifNeeded"/>
+    <accessorIterator MasterBinding="getEmployeesFindByNameIterator"
+                      Binds="departments" RangeSize="25"
+                      DataControl="SessionEJBLocal"
+                      BeanClass="model.Departments" id="departmentsIterator"
+                      ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <methodAction id="getEmployeesFindByName" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getEmployeesFindByName"
+                  IsViewObjectMethod="false" DataControl="SessionEJBLocal"
+                  InstanceName="SessionEJBLocal.dataProvider"
+                  ReturnName="data.SessionEJBLocal.methodResults.getEmployeesFindByName_SessionEJBLocal_dataProvider_getEmployeesFindByName_result">
+      <NamedData NDName="p_name" NDType="java.lang.Object"
+                 NDValue="${bindings.getEmployeesFindByName_p_name}"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="p_name">
+      <AttrNames>
+        <Item Value="getEmployeesFindByName_p_name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator"
+                     id="commissionPct">
+      <AttrNames>
+        <Item Value="commissionPct"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator" id="email">
+      <AttrNames>
+        <Item Value="email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator"
+                     id="employeeId">
+      <AttrNames>
+        <Item Value="employeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator"
+                     id="firstName">
+      <AttrNames>
+        <Item Value="firstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator" id="hireDate">
+      <AttrNames>
+        <Item Value="hireDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator" id="jobId">
+      <AttrNames>
+        <Item Value="jobId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator" id="lastName">
+      <AttrNames>
+        <Item Value="lastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator"
+                     id="phoneNumber">
+      <AttrNames>
+        <Item Value="phoneNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getEmployeesFindByNameIterator" id="salary">
+      <AttrNames>
+        <Item Value="salary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="departmentId">
+      <AttrNames>
+        <Item Value="departmentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="departmentName">
+      <AttrNames>
+        <Item Value="departmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsIterator" id="locationId">
+      <AttrNames>
+        <Item Value="locationId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="getEmployeesFindByNameIterator" id="First"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="getEmployeesFindByNameIterator" id="Previous"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="getEmployeesFindByNameIterator" id="Next"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="getEmployeesFindByNameIterator" id="Last"
+            RequiresUpdateModel="true" Action="last"/>
+    <methodAction id="mergeEmployees" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="mergeEmployees"
+                  IsViewObjectMethod="false" DataControl="SessionEJBLocal"
+                  InstanceName="SessionEJBLocal.dataProvider"
+                  ReturnName="data.SessionEJBLocal.methodResults.mergeEmployees_SessionEJBLocal_dataProvider_mergeEmployees_result">
+      <NamedData NDName="employees"
+                 NDValue="#{bindings.getEmployeesFindByNameIterator.currentRow.dataProvider}"
+                 NDType="model.Employees"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

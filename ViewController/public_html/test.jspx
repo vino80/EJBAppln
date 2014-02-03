@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+   
+        <af:panelStretchLayout id="psl1">
+          <f:facet name="center">
+               
+            <!-- id="af_one_column_stretched"   -->
+            <af:decorativeBox theme="dark" id="db2">
+              <f:facet name="center">              
+                <af:decorativeBox theme="medium" id="db1">
+                  <f:facet name="center">
+                  <af:group id="g1">
+                  <af:toolbar id="t1"><af:commandButton text="HOME" id="cb1" action="home"/></af:toolbar>
+                    <af:region value="#{bindings.emptaskflowdefinition1.regionModel}"
+                               id="r1"/>
+                      <af:selectOneChoice value="#{bindings.employeesList.inputValue}"
+                                          label="#{bindings.employeesList.label}"
+                                          required="#{bindings.employeesList.hints.mandatory}"
+                                          shortDesc="#{bindings.employeesList.hints.tooltip}"
+                                          id="soc1">
+                        <f:selectItems value="#{bindings.employeesList.items}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                    </af:group>
+                  </f:facet>
+                </af:decorativeBox>
+              </f:facet>
+            </af:decorativeBox>
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="browsePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SessionEJBLocal"
+              id="SessionEJBLocalIterator" ChangeEventPolicy="ppr"/>
+    <accessorIterator MasterBinding="SessionEJBLocalIterator"
+                      Binds="departmentsFindAll" RangeSize="25"
+                      DataControl="SessionEJBLocal"
+                      BeanClass="model.Departments"
+                      id="departmentsFindAllIterator" ChangeEventPolicy="ppr"/>
+    <accessorIterator MasterBinding="departmentsFindAllIterator"
+                      Binds="employeesList" RangeSize="25"
+                      DataControl="SessionEJBLocal" BeanClass="model.Employees"
+                      id="employeesListIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Binds="employeesListIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="employeesListQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="departmentsFindAllIterator" id="departmentId">
+      <AttrNames>
+        <Item Value="departmentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsFindAllIterator"
+                     id="departmentName">
+      <AttrNames>
+        <Item Value="departmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="departmentsFindAllIterator" id="locationId">
+      <AttrNames>
+        <Item Value="locationId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="departmentsFindAllIterator" id="First"
+            RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="departmentsFindAllIterator" id="Previous"
+            RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="departmentsFindAllIterator" id="Next"
+            RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="departmentsFindAllIterator" id="Last"
+            RequiresUpdateModel="true" Action="last"/>
+    <tree IterBinding="employeesListIterator" id="employeesList">
+      <nodeDefinition DefName="model.Employees" Name="employeesList0">
+        <AttrNames>
+          <Item Value="commissionPct"/>
+          <Item Value="email"/>
+          <Item Value="employeeId"/>
+          <Item Value="firstName"/>
+          <Item Value="hireDate"/>
+          <Item Value="jobId"/>
+          <Item Value="lastName"/>
+          <Item Value="phoneNumber"/>
+          <Item Value="salary"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

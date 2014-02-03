@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="SessionEJBLocal" Package="model" BeanClass="model.SessionEJBLocal"
+          isJavaBased="true">
+  <AccessorAttribute id="employeesFindAll" IsCollection="true"
+                     BeanClass="model.Employees"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="departmentsFindAll" IsCollection="true"
+                     BeanClass="model.Departments"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="model.Employees"
+                  BeanClass="model.Employees" id="persistEmployees"
+                  ReturnNodeName="Employees">
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="model.Employees"
+                  BeanClass="model.Employees" id="mergeEmployees"
+                  ReturnNodeName="Employees">
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeEmployees"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="model.Employees"
+                  BeanClass="model.Employees" id="getEmployeesFindByDept"
+                  ReturnNodeName="Employees"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="theDept" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="model.Departments"
+                  BeanClass="model.Departments" id="persistDepartments"
+                  ReturnNodeName="Departments">
+    <ParameterInfo id="departments" Type="model.Departments"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="model.Departments"
+                  BeanClass="model.Departments" id="mergeDepartments"
+                  ReturnNodeName="Departments">
+    <ParameterInfo id="departments" Type="model.Departments"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeDepartments"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="departments" Type="model.Departments"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="model.Employees"
+                  BeanClass="model.Employees" id="getEmployeesFindByName"
+                  ReturnNodeName="Employees"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p_name" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

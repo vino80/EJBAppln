@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="testPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="emptaskflowdefinition1"
+              taskFlowId="/WEB-INF/emp-task-flow-definition.xml#emp-task-flow-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SessionEJBLocal"
+              id="SessionEJBLocalIterator"/>
+    <accessorIterator MasterBinding="SessionEJBLocalIterator"
+                      Binds="departmentsFindAll" RangeSize="25"
+                      DataControl="SessionEJBLocal"
+                      BeanClass="model.Departments"
+                      id="departmentsFindAllIterator"/>
+    <accessorIterator MasterBinding="departmentsFindAllIterator"
+                      Binds="employeesList" RangeSize="25"
+                      DataControl="SessionEJBLocal" BeanClass="model.Employees"
+                      id="employeesListIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="employeesListIterator" ListOperMode="navigation"
+          ListIter="employeesListIterator" id="employeesList"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="firstName"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

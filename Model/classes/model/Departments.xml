@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Departments" Package="model" BeanClass="model.Departments"
+          isJavaBased="true">
+  <Attribute Name="departmentId" PrimaryKey="true" Type="java.lang.Long"
+             PrecisionRule="false" Precision="0" Scale="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="model.Departments.departmentId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="departmentName" Type="java.lang.String"/>
+  <Attribute Name="locationId" Type="java.lang.Long"/>
+  <AccessorAttribute id="employees" IsCollection="false"
+                     BeanClass="model.Employees"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="employeesList" IsCollection="true"
+                     RemoveMethod="removeEmployees" AddMethod="addEmployees"
+                     BeanClass="model.Employees"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeEmployees"/>
+      <Property Name="AddMethod" Value="addEmployees"/>
+    </Properties>
+  </AccessorAttribute>
+  <MethodAccessor IsCollection="false" Type="model.Employees"
+                  BeanClass="model.Employees" id="addEmployees"
+                  ReturnNodeName="Employees">
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="model.Employees"
+                  BeanClass="model.Employees" id="removeEmployees"
+                  ReturnNodeName="Employees">
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="model.Departments"
+                     BeanClass="model.Departments" id="Departments">
+    <ParameterInfo id="departmentId" Type="java.lang.Long"
+                   isStructured="false"/>
+    <ParameterInfo id="departmentName" Type="java.lang.String"
+                   isStructured="false"/>
+    <ParameterInfo id="locationId" Type="java.lang.Long" isStructured="false"/>
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="model.Departments"
+                     BeanClass="model.Departments" id="Departments"/>
+  <ResourceBundle>
+    <PropertiesBundle xmlns="http://xmlns.oracle.com/adfm/resourcebundle"
+                      PropertiesFile="view.ViewControllerBundle"/>
+  </ResourceBundle>
+</JavaBean>

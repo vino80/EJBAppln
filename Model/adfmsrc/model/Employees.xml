@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Employees" Package="model" BeanClass="model.Employees"
+          isJavaBased="true">
+  <Attribute Name="commissionPct" Type="java.lang.Double"/>
+  <Attribute Name="email" Type="java.lang.String"/>
+  <Attribute Name="employeeId" PrimaryKey="true" Type="java.lang.Long"/>
+  <Attribute Name="firstName" Type="java.lang.String"/>
+  <Attribute Name="hireDate" Type="java.sql.Timestamp"/>
+  <Attribute Name="jobId" Type="java.lang.String"/>
+  <Attribute Name="lastName" Type="java.lang.String"/>
+  <Attribute Name="phoneNumber" Type="java.lang.String"/>
+  <Attribute Name="salary" Type="java.lang.Double"/>
+  <AccessorAttribute id="employees" IsCollection="false"
+                     BeanClass="model.Employees"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="employeesList" IsCollection="true"
+                     RemoveMethod="removeEmployees" AddMethod="addEmployees"
+                     BeanClass="model.Employees"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeEmployees"/>
+      <Property Name="AddMethod" Value="addEmployees"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="departmentsList" IsCollection="true"
+                     RemoveMethod="removeDepartments" AddMethod="addDepartments"
+                     BeanClass="model.Departments"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeDepartments"/>
+      <Property Name="AddMethod" Value="addDepartments"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="departments" IsCollection="false"
+                     BeanClass="model.Departments"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="model.Employees"
+                  BeanClass="model.Employees" id="addEmployees"
+                  ReturnNodeName="Employees">
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="model.Employees"
+                  BeanClass="model.Employees" id="removeEmployees"
+                  ReturnNodeName="Employees">
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="model.Departments"
+                  BeanClass="model.Departments" id="addDepartments"
+                  ReturnNodeName="Departments">
+    <ParameterInfo id="departments" Type="model.Departments"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="model.Departments"
+                  BeanClass="model.Departments" id="removeDepartments"
+                  ReturnNodeName="Departments">
+    <ParameterInfo id="departments" Type="model.Departments"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="model.Employees"
+                     BeanClass="model.Employees" id="Employees">
+    <ParameterInfo id="commissionPct" Type="java.lang.Double"
+                   isStructured="false"/>
+    <ParameterInfo id="departments" Type="model.Departments"
+                   isStructured="true"/>
+    <ParameterInfo id="email" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="employeeId" Type="java.lang.Long" isStructured="false"/>
+    <ParameterInfo id="firstName" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="hireDate" Type="java.sql.Timestamp"
+                   isStructured="false"/>
+    <ParameterInfo id="jobId" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="lastName" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="employees" Type="model.Employees" isStructured="true"/>
+    <ParameterInfo id="phoneNumber" Type="java.lang.String"
+                   isStructured="false"/>
+    <ParameterInfo id="salary" Type="java.lang.Double" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="model.Employees"
+                     BeanClass="model.Employees" id="Employees"/>
+</JavaBean>
